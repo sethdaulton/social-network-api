@@ -4,8 +4,6 @@ const {
   getUserById,
   createUser,
   updateUser,
-  newUser,
-  putUserById,
   deleteUserById,
   createFriend,
   deleteFriend,
@@ -15,18 +13,9 @@ const {
 router.route('/').get(getUsers).post(createUser);
 
 ///api/users/:userId/friends/:friendId//
-router.route('/:studentId/users/:userId/friends/:friendId').post(createFriend);
+router.route('/:userId').get(getUserById).put(updateUser).delete(deleteUserById);
 
 ///api/users/:userId/friends/:friendId//
-router.route('/:studentId/users/:userId/friends/:friendId').delete(deleteFriend);
-
-// /api/users/:userId
-router
-  .route('/:courseId')
-  .get(getUserById)
-  .put(updateUser)
-  .post(newUser)
-  .put(putUserById)
-  .delete(deleteUserById);
+router.route('/:userId/friends/:friendId').post(createFriend).delete(deleteFriend);
 
 module.exports = router;

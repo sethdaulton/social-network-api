@@ -1,4 +1,5 @@
-const { Schema, model } = require("mongoose");
+const { Schema, Types } = require("mongoose");
+const dateFormat = require("../utils/dateFormat");
 
 // Schema to create Student model
 const reactionSchema = new Schema(
@@ -19,25 +20,15 @@ const reactionSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
-      required: true,
-      get: (date) => timeSince(date),
+      get: timestamp => dateFormat(timestamp),
     },
-    reactions: [reactionSchema],
   },
   {
     toJSON: {
       getters: true,
     },
+    id: false
   }
 );
-
-reactionSchema
-  .virtual("reactionCount")
-  // Getter
-  .get(function () {
-    return reactions.length;
-  });
-
-const Reaction = model("Reaction", reactionSchema);
 
 module.exports = Reaction;
