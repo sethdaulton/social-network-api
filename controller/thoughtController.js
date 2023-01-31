@@ -98,6 +98,8 @@ const thoughtController = {
       });
     },
 
+    
+
     //Add reaction and remove reaction 2 separate functions
 }
 
