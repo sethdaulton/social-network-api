@@ -1,7 +1,6 @@
 const { Schema, Types } = require("mongoose");
 const dateFormat = require("../utils/dateFormat");
 
-// Schema to create Student model
 const reactionSchema = new Schema(
   {
     reactionId: {
@@ -30,5 +29,7 @@ const reactionSchema = new Schema(
     id: false
   }
 );
+
+const Reaction = ('Reaction', reactionSchema);
 
 module.exports = Reaction;
